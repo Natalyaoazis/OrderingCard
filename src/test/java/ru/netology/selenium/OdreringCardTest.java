@@ -1,5 +1,6 @@
 package ru.netology.selenium;
 
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,7 +16,7 @@ public class OdreringCardTest {
     private WebDriver driver;
 
     @BeforeAll
-    public static void setUp() {
+    static void setUp() {
         System.setProperty("webdriver.chrome.driver", "./driver/win/chromedriver.exe");
     }
 
