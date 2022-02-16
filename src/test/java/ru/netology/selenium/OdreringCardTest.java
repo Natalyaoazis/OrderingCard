@@ -12,19 +12,21 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class OdreringCardTest {
     private WebDriver driver;
 
     @BeforeAll
-    static void setUp() {
-        System.setProperty("webdriver.chrome.driver", "./driver/win/chromedriver.exe");
+    static void setUpClass() {
+        WebDriverManager.chromedriver().setup();
     }
 
     @BeforeEach
     public void setUpTest() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
+//        options.addArguments("--disable-dev-shm-usage");
+//        options.addArguments("--no-sandbox");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
     }
@@ -45,6 +47,5 @@ public class OdreringCardTest {
         String text = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText();
         assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text.trim());
     }
-
 
 }
